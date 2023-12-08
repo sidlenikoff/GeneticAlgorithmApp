@@ -1,0 +1,161 @@
+﻿<Window x:Class="GeneticAlgorithm_App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GeneticAlgorithm_App"
+        mc:Ignorable="d"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        Background="{DynamicResource GridBrush}"
+        Title="MainWindow" Height="800" Width="1200">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.13*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.7*"/>
+        </Grid.RowDefinitions>
+        <Menu Height="Auto" FontSize="14" Background="{DynamicResource BorderBrush}" Grid.ColumnSpan="2" VerticalAlignment="Center">
+            <MenuItem Header="Открыть файл" VerticalAlignment="Stretch" Margin="10,0,0,0"/>
+        </Menu>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <ScrollViewer Margin="0,0,0,10">
+                    <StackPanel Margin="10">
+                        <TextBox HorizontalAlignment="Stretch"
+                                 ui:ControlHelper.Header="Размер популяции"
+                                 Margin="0,0,0,10"/>
+                        <TextBox HorizontalAlignment="Stretch"
+                                 ui:ControlHelper.Header="Вероятность кроссовера"
+                                 Margin="0,0,0,10"/>
+                        <TextBox HorizontalAlignment="Stretch"
+                                 ui:ControlHelper.Header="Вероятность мутации"
+                                 Margin="0,0,0,20"/>
+                        <ComboBox HorizontalAlignment="Stretch"
+                              ui:ControlHelper.Header="Генерация начальной популяции"
+                              Margin="0,0,0,10"/>
+                        <ComboBox HorizontalAlignment="Stretch"
+                              ui:ControlHelper.Header="Выбор родительской пары"
+                              Margin="0,0,0,10"/>
+                        <ComboBox HorizontalAlignment="Stretch"
+                              ui:ControlHelper.Header="Оператор кроссовера"
+                              Margin="0,0,0,10"/>
+                        <TextBox HorizontalAlignment="Stretch"
+                              ui:ControlHelper.Header="Количество точек кроссовера"
+                              Margin="0,0,0,20"/>
+                        <ComboBox HorizontalAlignment="Stretch"
+                              ui:ControlHelper.Header="Оператор мутации"
+                              Margin="0,0,0,10"/>
+                        <ComboBox HorizontalAlignment="Stretch"
+                              ui:ControlHelper.Header="Стратегия формирования следующего поколения"
+                              Margin="0,0,0,10"/>
+                        <ComboBox HorizontalAlignment="Stretch"
+                              ui:ControlHelper.Header="Оператор селекции"
+                              Margin="0,0,0,10"/>
+                        <ComboBox HorizontalAlignment="Stretch"
+                              ui:ControlHelper.Header="Обработка ограничений"
+                              Margin="0,0,0,10"/>
+                        <ComboBox HorizontalAlignment="Stretch"
+                              ui:ControlHelper.Header="Условия останова"
+                              Margin="0,0,0,10"/>
+                        <TextBox HorizontalAlignment="Stretch"
+                                 Margin="0,0,0,10"/>
+                    </StackPanel>
+                </ScrollViewer>
+                <Button HorizontalAlignment="Stretch"
+                            Content="Запустить"
+                            ui:ControlHelper.CornerRadius="5"
+                            Grid.Row="1"/>
+            </Grid>
+            <Grid Grid.Column="1" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Content="Исходные данные"
+                       Margin="0,0,0,10"/>
+                <ScrollViewer Grid.Row="1">
+                    <ItemsControl ItemsSource="{Binding Items}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Background="{DynamicResource BorderBrush}"
+                                        CornerRadius="10"
+                                        Height="60"
+                                        Padding="20"
+                                        Margin="10">
+                                    <StackPanel Orientation="Horizontal"
+                                                VerticalAlignment="Top">
+                                        <TextBlock Text="{Binding Id, StringFormat=[{0}]:}"/>
+                                        <TextBlock Text="{Binding Price, StringFormat=Цена: {0}}"
+                                                   Margin="10,0,0,0"/>
+                                        <TextBlock Grid.Column="1"
+                                                       Margin="10,0,0,0"
+                                                       HorizontalAlignment="Right"
+                                                       Text="{Binding Weight, StringFormat=Вес: {0}}"/>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Grid>
+
+            <Grid Grid.Column="2" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Content="Решение"
+                       Margin="0,0,0,10"/>
+                <ScrollViewer Grid.Row="1">
+                    <ItemsControl ItemsSource="{Binding Items}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Background="{DynamicResource BorderBrush}"
+                                        CornerRadius="10"
+                                        Height="60"
+                                        Padding="20"
+                                        Margin="10">
+                                    <StackPanel Orientation="Horizontal"
+                                                VerticalAlignment="Top">
+                                        <TextBlock Text="{Binding Id, StringFormat=[{0}]:}"/>
+                                        <TextBlock Text="{Binding Price, StringFormat=Цена: {0}}"
+                                                   Margin="10,0,0,0"/>
+                                        <TextBlock Grid.Column="1"
+                                                       Margin="10,0,0,0"
+                                                       HorizontalAlignment="Right"
+                                                       Text="{Binding Weight, StringFormat=Вес: {0}}"/>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="2"
+              Margin="10">
+            <RichTextBox ui:ControlHelper.Header="Лог" 
+                         Margin="5,10" 
+                         IsReadOnly="True">
+                <RichTextBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Сохранить" x:Name="saveLogBtn" />
+                        <MenuItem Header="Очистить" x:Name="clearLogBtn"/>
+                    </ContextMenu>
+                </RichTextBox.ContextMenu>
+                
+            </RichTextBox>
+        </Grid>
+    </Grid>
+</Window>

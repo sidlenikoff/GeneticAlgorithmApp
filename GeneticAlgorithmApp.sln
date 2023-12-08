@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33103.184
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ega_console_app", "ega_console_app\ega_console_app.csproj", "{BABE97ED-878C-4937-9A1F-4D858F8BB0E8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeneticAlgorithm_App", "GeneticAlgorithm_App\GeneticAlgorithm_App.csproj", "{1C707E45-0769-4564-A01F-DEF0E7D3A06E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BABE97ED-878C-4937-9A1F-4D858F8BB0E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BABE97ED-878C-4937-9A1F-4D858F8BB0E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BABE97ED-878C-4937-9A1F-4D858F8BB0E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BABE97ED-878C-4937-9A1F-4D858F8BB0E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C707E45-0769-4564-A01F-DEF0E7D3A06E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C707E45-0769-4564-A01F-DEF0E7D3A06E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C707E45-0769-4564-A01F-DEF0E7D3A06E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C707E45-0769-4564-A01F-DEF0E7D3A06E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2E30E46E-7406-4DB5-BD40-2576C715513F}
+	EndGlobalSection
+EndGlobal

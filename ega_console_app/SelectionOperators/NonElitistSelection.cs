@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ega_console_app.SelectionOperators
+{
+    public class NonElitistSelection : IElitistSelection
+    {
+        public void AddBestBeing(IList<Encoding> population, ref IList<Encoding> newPopulation)
+        {
+        }
+    }
+}

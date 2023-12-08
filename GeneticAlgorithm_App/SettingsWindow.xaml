@@ -1,0 +1,117 @@
+﻿<Window x:Class="GeneticAlgorithm_App.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GeneticAlgorithm_App"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        mc:Ignorable="d"
+        Title="SettingsWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Content="Параметры алгоритма"
+               Style="{DynamicResource Header}"/>
+        <ScrollViewer Grid.Row="1"
+                      Background="{DynamicResource LightGray}">
+            <ItemsControl Margin="40,0">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <TextBox Margin="15,10"
+                     ui:ControlHelper.Header="Размер популяции"
+                         Text="{Binding AlgorithmParameters.PopulationSize}"/>
+                <TextBox Margin="15,10"
+                     ui:ControlHelper.Header="Вероятность кроссовера"
+                         Text="{Binding AlgorithmParameters.CrossoverProbability}"/>
+                <TextBox Margin="15,10"
+                     ui:ControlHelper.Header="Вероятность мутации"
+                         Text="{Binding AlgorithmParameters.MutationProbability}"/>
+
+                <ComboBox ui:ControlHelper.Header="Генерация начальной популяции"
+                          ItemsSource="{Binding PopulationGenerators}"
+                          SelectedItem="{Binding AlgorithmParameters.PopulationGenerator, Mode=TwoWay}"
+                          Margin="15,10"/>
+                <ComboBox ui:ControlHelper.Header="Выбор родительской пары"
+                            ItemsSource="{Binding ParentsSelectors}"
+                          SelectedItem="{Binding AlgorithmParameters.ParentSelector, Mode=TwoWay}"
+                          Margin="15,10"/>
+                <StackPanel>
+                    <ComboBox ui:ControlHelper.Header="Оператор кроссовера"
+                      Margin="15,10"
+                              ItemsSource="{Binding CrossoverOperators}"
+                              SelectedItem="{Binding ChosenCrossoverOperator}"/>
+                    <TextBox ui:ControlHelper.Header="Количество точек кроссовера"
+                             Text="{Binding AlgorithmParameters.PointsInCrossover,Mode=TwoWay}"
+                         Margin="15,10"
+                         Visibility="{Binding CrossoverPointsVisibility}"/>
+                </StackPanel>
+                <ComboBox ui:ControlHelper.Header="Оператор мутации"
+                          ItemsSource="{Binding MutationOperators}"
+                          SelectedItem="{Binding AlgorithmParameters.MutationOperator}"
+                      Margin="15,10"/>
+                
+                    <ComboBox ui:ControlHelper.Header="Стратегия формирования следующего поколения"
+                          SelectedItem="{Binding AlgorithmParameters.ReproductiveGroupGenerator}"  
+                          ItemsSource="{Binding ReproductiveGroupGenerators}"
+                          Margin="15,10"/>
+                
+                <StackPanel Margin="15,10">
+                    <ComboBox ui:ControlHelper.Header="Оператор селекции"
+                      ItemsSource="{Binding SelectionOperators}"
+                              SelectedItem="{Binding AlgorithmParameters.SelectionOperator}"/>
+                    <CheckBox Margin="0,10,0,0"
+                              Content="Элитарный"
+                              IsChecked="{Binding AlgorithmParameters.IsChosenSelectionElitist}"/>
+                </StackPanel>
+                <ComboBox ui:ControlHelper.Header="Обработка ограничений"
+                      Margin="15,10"
+                          ItemsSource="{Binding ConstringProcessingOperators}"
+                          SelectedItem="{Binding AlgorithmParameters.ConstrintProcessor}"/>
+                <StackPanel Margin="15,10">
+                    <Label Content="Условия останова"/>
+                    <ItemsControl ItemsSource="{Binding StopConditions}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="0,10,10,10">
+                                    <CheckBox IsChecked="{Binding Operator.IsPeeked, Mode=TwoWay}">
+                                        <CheckBox.Content>
+                                            <TextBlock Text="{Binding Operator.Name}"/>
+                                        </CheckBox.Content>
+                                    </CheckBox>
+                                    <TextBox Text="{Binding Operator.Limit, Mode=TwoWay}"
+                                                 Margin="10,0,0,0"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </ItemsControl>
+        </ScrollViewer>
+        <Button HorizontalAlignment="Right"
+                Margin="40,15"
+                Height="35"
+                Style="{StaticResource AccentButtonStyle}"
+                Grid.Row="2"
+                Command="{Binding SaveCommand}">
+            <Button.Content>
+                <Label Style="{DynamicResource Header}"
+                               Content="Сохранить"
+                               Margin="15,0"
+                               FontSize="12"
+                               Foreground="White"/>
+            </Button.Content>
+        </Button>
+    </Grid>
+</Window>
